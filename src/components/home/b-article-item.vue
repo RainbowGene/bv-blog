@@ -1,6 +1,10 @@
 <template>
   <!--  -->
   <div>
+    <!-- 展示图（横版大图） -->
+    <div class="blog-thumb">
+      <img src="@/assets/img/blog/featured-4.jpg" alt="featured" />
+    </div>
     <div class="blog-details">
       <div class="blog-cat">
         <a href="#">fashion</a>
@@ -41,6 +45,21 @@
         </div>
       </div>
     </div>
+
+    <!-- 基本样式使用 -->
+    <!-- <div class="blog-area">
+        <div class="container">
+          <div class="row">
+            <div class="col-xl-12 col-lg-12">
+              <div class="blog-posts-wrapper">
+                <div class="blog-post-wrap-3 blog-post-large mb-60">
+                  <b-article-item></b-article-item>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div> -->
   </div>
 </template>
 

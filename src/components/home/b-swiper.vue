@@ -1,9 +1,10 @@
 <template>
   <!-- 轮播图组件 -->
-  <div style="width:100%">
+  <div style="width: 100%">
     <swiper
       :slides-per-view="3"
       :space-between="50"
+      :options="swiperOption"
       class="slider-area main-home-slider"
     >
       <swiper-slide
@@ -19,10 +20,10 @@
                   data-animation="fadeInDown"
                   data-delay="0.3s"
                 >
-                  <a href="post-standard.html">travel</a>
+                  <a href="#">travel</a>
                 </span>
                 <h2 class="title" data-animation="fadeInUp" data-delay="0.6s">
-                  <a href="post-standard.html"
+                  <a href="#"
                     >Most Wonderfull Place In London Hills</a
                   >
                 </h2>
@@ -34,7 +35,7 @@
           </div>
         </div>
       </swiper-slide>
-     <swiper-slide
+      <swiper-slide
         class="home-slider d-flex align-items-end"
         :style="backgroundDiv[1]"
       >
@@ -47,10 +48,10 @@
                   data-animation="fadeInDown"
                   data-delay="0.3s"
                 >
-                  <a href="post-standard.html">travel</a>
+                  <a href="#">travel</a>
                 </span>
                 <h2 class="title" data-animation="fadeInUp" data-delay="0.6s">
-                  <a href="post-standard.html"
+                  <a href="#"
                     >Most Wonderfull Place In London Hills</a
                   >
                 </h2>
@@ -60,8 +61,8 @@
               </div>
             </div>
           </div>
-        </div>
-      </swiper-slide><swiper-slide
+        </div> </swiper-slide
+      ><swiper-slide
         class="home-slider d-flex align-items-end"
         :style="backgroundDiv[2]"
       >
@@ -74,10 +75,10 @@
                   data-animation="fadeInDown"
                   data-delay="0.3s"
                 >
-                  <a href="post-standard.html">travel</a>
+                  <a href="#">travel</a>
                 </span>
                 <h2 class="title" data-animation="fadeInUp" data-delay="0.6s">
-                  <a href="post-standard.html"
+                  <a href="#"
                     >Most Wonderfull Place In London Hills</a
                   >
                 </h2>
@@ -103,6 +104,14 @@ export default {
   },
   data() {
     return {
+      swiperOption: {  // 轮播插件配置项
+        autoplay: true,
+        loop: true,
+        pagination: {
+          el: ".swiper-pagination",
+          type: "bullets",
+        },
+      },
       slideList: [{ imgSrc: "" }],
       backgroundDiv: [
         {
@@ -124,5 +133,4 @@ export default {
 };
 </script>
 <style lang='scss' scoped>
-
 </style>
