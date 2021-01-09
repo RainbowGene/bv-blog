@@ -9,7 +9,9 @@
     >
       <swiper-slide
         class="home-slider d-flex align-items-end"
-        :style="backgroundDiv[0]"
+        v-for="(item, i) in list"
+        :key="i"
+        :style="'backgroundImage:url(' + item.cover + ')'"
       >
         <div class="container">
           <div class="row">
@@ -20,70 +22,16 @@
                   data-animation="fadeInDown"
                   data-delay="0.3s"
                 >
-                  <a href="#">travel</a>
+                  <a href="#">标签</a>
                 </span>
                 <h2 class="title" data-animation="fadeInUp" data-delay="0.6s">
-                  <a href="#"
-                    >Most Wonderfull Place In London Hills</a
-                  >
+                  <a href="#">{{ item.title }}</a>
                 </h2>
-                <span class="date" data-animation="fadeInUp" data-delay="1.3s"
-                  >20 March 2020</span
-                >
-              </div>
-            </div>
-          </div>
-        </div>
-      </swiper-slide>
-      <swiper-slide
-        class="home-slider d-flex align-items-end"
-        :style="backgroundDiv[1]"
-      >
-        <div class="container">
-          <div class="row">
-            <div class="col-xl-12">
-              <div class="home-slide-content text-center pb-100">
                 <span
-                  class="sub-title"
-                  data-animation="fadeInDown"
-                  data-delay="0.3s"
-                >
-                  <a href="#">travel</a>
-                </span>
-                <h2 class="title" data-animation="fadeInUp" data-delay="0.6s">
-                  <a href="#"
-                    >Most Wonderfull Place In London Hills</a
-                  >
-                </h2>
-                <span class="date" data-animation="fadeInUp" data-delay="1.3s"
-                  >20 March 2020</span
-                >
-              </div>
-            </div>
-          </div>
-        </div> </swiper-slide
-      ><swiper-slide
-        class="home-slider d-flex align-items-end"
-        :style="backgroundDiv[2]"
-      >
-        <div class="container">
-          <div class="row">
-            <div class="col-xl-12">
-              <div class="home-slide-content text-center pb-100">
-                <span
-                  class="sub-title"
-                  data-animation="fadeInDown"
-                  data-delay="0.3s"
-                >
-                  <a href="#">travel</a>
-                </span>
-                <h2 class="title" data-animation="fadeInUp" data-delay="0.6s">
-                  <a href="#"
-                    >Most Wonderfull Place In London Hills</a
-                  >
-                </h2>
-                <span class="date" data-animation="fadeInUp" data-delay="1.3s"
-                  >20 March 2020</span
+                  class="date"
+                  data-animation="fadeInUp"
+                  data-delay="1.3s"
+                  >{{ item.created_at }}</span
                 >
               </div>
             </div>
@@ -102,9 +50,16 @@ export default {
     Swiper,
     SwiperSlide,
   },
+  props: {
+    list: {
+      type: Array,
+      default: null,
+    },
+  },
   data() {
     return {
-      swiperOption: {  // 轮播插件配置项
+      swiperOption: {
+        // 轮播插件配置项
         autoplay: true,
         loop: true,
         pagination: {
@@ -112,21 +67,29 @@ export default {
           type: "bullets",
         },
       },
-      slideList: [{ imgSrc: "" }],
-      backgroundDiv: [
-        {
-          backgroundImage:
-            "url(" + require("../../assets/img/slider/slider-1.jpg") + ")",
-        },
-        {
-          backgroundImage:
-            "url(" + require("../../assets/img/slider/slider-2.jpg") + ")",
-        },
-        {
-          backgroundImage:
-            "url(" + require("../../assets/img/slider/slider-3.jpg") + ")",
-        },
-      ],
+      // list: [
+      //   {
+      //     title: "",
+      //     content: "",
+      //     cover:
+      //       "http://egg-bv-blog.oss-cn-shenzhen.aliyuncs.com/blog-photo/dz489i8sdnk0000.jpg",
+      //     created_at: "",
+      //   },
+      //   {
+      //     title: "",
+      //     content: "",
+      //     cover:
+      //       "http://egg-bv-blog.oss-cn-shenzhen.aliyuncs.com/blog-photo/dz489i8sdnk0000.jpg",
+      //     created_at: "",
+      //   },
+      //   {
+      //     title: "",
+      //     content: "",
+      //     cover:
+      //       "http://egg-bv-blog.oss-cn-shenzhen.aliyuncs.com/blog-photo/dz489i8sdnk0000.jpg",
+      //     created_at: "",
+      //   },
+      // ],
     };
   },
   methods: {},

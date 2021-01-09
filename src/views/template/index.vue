@@ -4,7 +4,7 @@
     <b-tabbar></b-tabbar>
     <v-loading></v-loading>
     <main>
-      <b-swiper></b-swiper>
+      <b-swiper :list="swiperList"></b-swiper>
       <!-- body left:article right:info -->
       <div class="blog-area mt-5">
         <div class="container">
@@ -13,14 +13,16 @@
             <div class="col-xl-8 col-lg-8">
               <div class="blog-posts-wrapper">
                 <div class="blog-post-wrap-3 blog-post-large mb-60">
-                  <!-- article（文章组件） -->
+                  <!-- 文章项(标准版) -->
                   <b-article-item></b-article-item>
                   <!-- 邮件致电 -->
                   <!-- <b-send-email></b-send-email> -->
-                  <!-- 文章项 -->
+                  <!-- 文章项(mini版) -->
                   <div class="row mt-60">
-                    <b-article-item-mini></b-article-item-mini>
-                    <b-article-item-mini></b-article-item-mini>
+                    <b-article-item-mini
+                      v-for="i in 10"
+                      :key="i"
+                    ></b-article-item-mini>
                   </div>
                   <!-- 分页组件 -->
                   <b-paging></b-paging>
@@ -58,7 +60,7 @@ import BSideRecommend from "@/components/home/b-side-recommend.vue";
 import BArticleItemMini from "@/components/home/b-article-item-mini.vue";
 import BPaging from "@/components/home/b-paging.vue";
 import BRightBanner from "@/components/home/b-right-banner.vue";
-import BFriendHref from "../../components/home/b-friend-href.vue";
+import BFriendHref from "@/components/home/b-friend-href.vue";
 
 export default {
   components: {
@@ -76,12 +78,27 @@ export default {
     BFriendHref,
   },
   data() {
-    return {};
+    return {
+      swiperList: [], // 轮播图数据
+    };
   },
-
-  computed: {},
-
-  methods: {},
+  created() {
+    this.init();
+  },
+  methods: {
+    //#region  初始化页面
+    init() {
+      this.getSwiper();
+    },
+    // 获取轮播图数据
+    getSwiper() {
+      this.axios.get("/api/common/lunbo").then((res) => {
+        console.log(res);
+        this.swiperList = res.data;
+      });
+    },
+    //#endregion
+  },
 };
 </script>
 <style lang='scss' scoped>

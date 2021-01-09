@@ -1,10 +1,18 @@
 <template>
   <!-- 迷你版文章展示项 -->
   <div class="col-xl-6 col-lg-6 col-md-6">
-    <div class="blog-post-wrap-3 mb-60">
+    <div
+      class="blog-post-wrap-3 mb-60"
+      @mouseover="mouseover"
+      @mouseleave="mouseleave"
+    >
       <div class="blog-thumb">
         <a href="#">
-          <img src="@/assets/img/blog/blog-thumb-9.jpg" alt="featured" />
+          <img
+            src="@/assets/img/blog/blog-thumb-9.jpg"
+            alt="featured"
+            :class="isTrans ? 'imgtransform' : ''"
+          />
         </a>
         <div class="blog-cat">
           <a href="#">lifestyle</a>
@@ -37,15 +45,34 @@
 <script>
 export default {
   data() {
-    return {};
+    return {
+      isTrans: false,
+    };
   },
 
   components: {},
 
   computed: {},
 
-  methods: {},
+  methods: {
+    mouseover() {
+      // console.log("鼠标移入");
+      this.isTrans = true;
+    },
+    mouseleave() {
+      // console.log("鼠标移出");
+      this.isTrans = false;
+    },
+  },
 };
 </script>
 <style lang='scss' scoped>
+// 为什么这么做会导致整个页面相同元素都会出现 hover 效果呢
+// .blog-post-wrap-3:hover .blog-thumb img {
+//   transform: scale(1.05);
+// }
+
+.imgtransform {
+  transform: scale(1.05);
+}
 </style>

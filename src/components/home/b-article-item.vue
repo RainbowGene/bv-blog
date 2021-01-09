@@ -2,8 +2,12 @@
   <!--  -->
   <div>
     <!-- 展示图（横版大图） -->
-    <div class="blog-thumb">
-      <img src="@/assets/img/blog/featured-4.jpg" alt="featured" />
+    <div class="blog-thumb" @mouseover="mouseover" @mouseleave="mouseleave">
+      <img
+        src="@/assets/img/blog/featured-4.jpg"
+        alt="featured"
+        :class="isTrans ? 'imgtransform' : ''"
+      />
     </div>
     <div class="blog-details">
       <div class="blog-cat">
@@ -66,15 +70,24 @@
 <script>
 export default {
   data() {
-    return {};
+    return {
+      isTrans: false,
+    };
   },
-
-  components: {},
-
-  computed: {},
-
-  methods: {},
+  methods: {
+    mouseover() {
+      // console.log("鼠标移入");
+      this.isTrans = true;
+    },
+    mouseleave() {
+      // console.log("鼠标移出");
+      this.isTrans = false;
+    },
+  },
 };
 </script>
 <style lang='scss' scoped>
+.imgtransform {
+  transform: scale(1.05);
+}
 </style>
